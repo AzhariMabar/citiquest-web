@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>CITIQUEST - Explore the Digital Frontier</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Logo.png">
+
+  <!-- Meta Description -->
+  <meta name="description"
+    content="In the realm of CITIQUEST, users become architects of a digital frontier, each hailed as a Citizen contributing to the tapestry of a vibrant digital civilizations. Imagine a world where exploration knows no bounds, where the lines between reality and fantasy blur upon a real-world map.">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+
+<body>
+  <!-- Pre-Loader -->
+  <div id="preloader">
+    <img class="page-image" src="Logo.png" id="logo" alt />
+    <br />
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <!-- Navigation Bar: Activator -->
+  <div class="btn-container">
+    <button class="nav-button transparent-bg-btn glow-effect" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+      <span class="visually-hidden">Toggle navigation</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" style="fill: black;"
+        viewBox="0 0 448 512">
+        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path
+          d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Navigation Bar: Offcanvas -->
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+    aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+      <button type="button" class="nav-button" data-bs-dismiss="offcanvas" aria-label="Close" style="
+            margin-top: 5px;
+            margin-bottom: -8px;
+            margin-left: 5px;
+            font-size: 30px;
+          ">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 384 512">
+          <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
+        </svg>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <a href="#Citiquest">
+        <p>Citiquest</p>
+      </a>
+      <br>
+      <a href="#introduction">
+        <p>introduction</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Popup Form -->
+  <div class="popup-form-overlay" id="popupOverlay">
+    <div class="popup-form">
+      <span class="close-popup" onclick="closePopup()">&times;</span>
+      <h2 class="popup-title">Register</h2>
+      <form id="subscribeForm" onsubmit="subscribe(event)">
+        <div class="input-group">
+          <input type="text" class="form-control" id="name" placeholder="Your Name" required />
+        </div>
+        <div class="input-group">
+          <input type="email" class="form-control" id="email" placeholder="Your Email" required />
+        </div>
+        <div class="input-group" id="walletInput" style="display: none">
+          <input type="text" class="form-control" id="wallet" placeholder="Your Wallet Address" readonly />
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-info" onclick="connectWithMetamask()">
+            Connect with Metamask
+          </button>
+          <button type="submit" class="btn btn-success">Subscribe</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content">
+    <!-- Main Content: Home Page -->
+    <section class="page" id="home-page">
+      <img class="page-image" src="Logo.png" id="logo" alt />
+      <h1 id="#Citiquest">CITIQUEST</h1>
+      <img src="arrow.png" id="explore" alt />
+      <button id="metamask" onclick="openPopup()">JOIN US</button>
+    </section>
+  </div>
+
+  <!-- Main Content: About Us -->
+  <section class="page" id="about-us">
+    <div>
+      <div class="d-flex justify-content-center mb-3">
+        <img src="about-us.png" id="logo" alt />
+      </div>
+      <h1 id="introduction">
+        Welcome to the dawn of a New Era in Gaming!
+      </h1>
+      <p>
+        In the realm of CITIQUEST, users become architects of a digital
+        frontier, each hailed as a Citizen contributing to the tapestry of a
+        vibrant digital civilizations. Imagine a world where exploration
+        knows no bounds, where the lines between reality and fantasy blur
+        upon a real-world map.
+      </p>
+
+      <p>
+        As you venture into CITIQUEST, you assume the mantle of a Resident,
+        a Citizen with limitless potential. Here, your dreams take flight
+        unhindered. Whether you seek fame, strength, or influence, the Game
+        bestows upon you the liberty to chart your destiny, much like
+        embarking on a voyage to uncharted realms. A utopia of innovation
+        awaits, where every corner teems with possibility.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content: Features -->
+  <section class="page" id="features">
+    <div class="article">
+      <div class="d-flex justify-content-center mb-3">
+        <img src="play-learn-grow.png" />
+      </div>
+      <h1>Play, Learn & Grow!</h1>
+      <p>
+        Connect, collaborate, and conquer together with our Social
+        Interaction feature in CITIQUEST!
+      </p>
+    </div>
+
+    <div class="video-container">
+      <div class="thumbnail-container">
+        <img src="thumb_video1.png" alt="Thumbnail" class="thumbnail" />
+        <img src="play.webp" id="play-button" alt />
+        <img src="arrow.webp" id="arrow1" alt />
+        <img src="arrow.webp" id="arrow2" alt />
+        <img src="arrow.webp" id="arrow3" alt />
+        <img src="arrow.webp" id="arrow4" alt />
+      </div>
+
+      <div id="video-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <video id="video-player" controls poster="thumb_video1.png">
+            <source src="video1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div id="marquee-container">
+      <p class="sponsor">SPONSOR</p>
+      <div>
+        <img src="sponsor/code.id.png" />
+        <img src="sponsor/ketapang.png" />
+        <img src="sponsor/nakama.png" />
+        <img src="sponsor/trijek.png" />
+        <img src="sponsor/twister.png" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Smart Contract -->
+  <section class="page" id="smart-contract">
+    <div>
+      <div class="d-flex justify-content-center mb-3">
+        <img class="page-image" src="sc.png" alt />
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>
+          Citiquest Smart Contract
+        </h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <p>
+          A smart contract for managing transactions and agreements related to
+          Citiquest projects.
+        </p>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <p>
+          Contract Address : 0x80C29326942CafF285587D4FDdC05867e01DEDB3
+        </p>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <button
+          onclick="window.location.href='https://github.com/TechRate/Smart-Contract-Audits/blob/main/January_2024/Citiquest.pdf'">
+          Audit
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Partners & Supporters Section -->
+  <section class="page" id="partners-and-supporters">
+    <div>
+      <div class="d-flex justify-content-center mb-3">
+        <img class="page-image" src="partners-and-supporters.png" alt />
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>Our Partners and Supporters</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3>
+        <div class=" row mx-auto">
+        <div class="col-lg-4 partners">
+          <img src="partners-and-supporters/coingecko.png" class="bd-placeholder-img rounded-circle" width="140"
+            height="140" alt="Sample 1 Image">
+          <h2>CoinGecko</h2>
+          <p><a class="btn btn-secondary" href="https://www.coingecko.com/">Site »</a></p>
+        </div>
+        <div class="col-lg-4 partners">
+          <img src="partners-and-supporters/coinmarketcap.png" class="bd-placeholder-img rounded-circle" width="140"
+            height="140" alt="Sample 2 Image">
+          <h2>CoinMarketCap</h2>
+          <p><a class="btn btn-secondary" href="https://coinmarketcap.com/">Site »</a></p>
+        </div>
+        <div class="col-lg-4 partners">
+          <img src="partners-and-supporters/dexview.png" class="bd-placeholder-img rounded-circle" width="140"
+            height="140" alt="Sample 3 Image">
+          <h2>DexView</h2>
+          <p><a class="btn btn-secondary" href="https://www.dexview.com/">Site »</a></p>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Our Partners & Supporters Section 2 -->
+  <section class="page" id="partners-and-supporters-2">
+    <div>
+      <div class="d-flex justify-content-center mb-3">
+        <img class="page-image" src="partners-and-supporters.png" alt="Partners and Supporters">
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>Our Partners and Supporters</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <div class="row mx-auto">
+          <div class="col-lg-5 partners">
+            <img src="partners-and-supporters/pinksale.png" class="bd-placeholder-img rounded-circle" width="140"
+              height="140" alt="Pinksale Logo">
+            <h2>Pinksale</h2>
+            <p><a class="btn btn-secondary" href="https://www.pinksale.finance/">Site »</a></p>
+          </div>
+          <div class="col-lg-5 partners">
+            <img src="partners-and-supporters/techrate.png" class="bd-placeholder-img rounded-circle" width="140"
+              height="140" alt="Techrate Logo">
+            <h2>Techrate</h2>
+            <p><a class="btn btn-secondary" href="https://techrate.org/">Site »</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <div class="page" id="roadmap">
+    <div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>Roadmap</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>January 2024</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <p>
+          - Concept & Design Research
+          <br>
+          - Whitepaper Development
+          <br>
+          - Whitepaper & GDD Design
+          <br>
+          - Web Design (Front End)
+          <br>
+          - Design & Assets(Rough assets)
+        </p>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>February 2024</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <p>
+          - Continue designing the Whitepaper and completing the GDD.
+          <br>
+          - Design & Asset Development (Character, 3D Assets, 2D NPC's)
+          <br>
+          - Engine Development (GPS, Mini Games, Weather, Stat)
+          <br>
+          - Level Design (Quest)
+          <br>
+          - Web (Front End - Landing Page)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roadmap Section -->
+  <div class="page" id="roadmap-2">
+    <div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>Roadmap</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>March 2024</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <p>
+          - Design & Asset Development (3D Character, 3D Inventory)
+          <br>
+          - Engine Development (Integration, Map, Inventory)
+          <br>
+          - Level Design (Battle, Character Level)
+          <br>
+          - Web (Front end - social media)
+          <br>
+          - Web (Back end - Item, Player)
+        </p>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>Q1 Target (Early Build Features)</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <p>
+          - Playable on Map
+          <br>
+          - Citipoint and Questpoint activated
+          <br>
+          - Customizable Character
+          <br>
+          - Basic Inventory integrated
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roadmap Section -->
+  <div class="page" id="roadmap-3">
+    <div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>Roadmap</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>April 2024</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <p>
+          - Design & Asset Development (Citipoint, Questpoint)
+          <br>
+          - Engine Development (Shop, Multi Player)
+          <br>
+          - Level Design (Mission)
+          <br>
+          - Web (Front End & Back End - Dashboard)
+        </p>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>May 2024</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <p>
+          - Design & Asset Development, Engine Development, Level Design
+          <br>
+          - Web (Front End & Back End - Internal Limited Test)
+        </p>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>June 2024</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <p>
+          - Design & Asset Development (Final Polish)
+          <br>
+          - Engine Development (Bug hunting)
+          <br>
+          - Level Design (Story line)
+          <br>
+          - Web (Front End & Back End): - Update/Bug Fix
+        </p>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <h1>Q2 Target</h1>
+      </div>
+      <div class="d-flex justify-content-center mb-3">
+        <p>
+          - RELEASE Pre-Alpha 0.X.X version
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section class="page" id="news">
+    <div class="d-flex justify-content-center mb-3">
+      <h1>News</h1>
+    </div>
+    <div class="d-flex justify-content-center mb-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="card-title">Terobosan Baru BeOne Tech...</h1>
+                <p class="card-text">BeOne Tech, sebuah perusahaan pionir berbasis Teknologi Blockchain yang diprakarsai pakar Blockchain Indonesia Meidy Salmon...</p>
+                <a href="https://katakutip.com/terobosan-baru-beone-tech-pengembang-blockhain-asli-indonesia" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="card-title">CitiQuest dari BeOne Tech...</h1>
+                <p class="card-text">Sebuah SuperApp andal bernama "CitiQuest" dikembangkannya oleh BeOne Tech...</p>
+                <a href="https://purwokerto.inews.id/read/401084/citiquest-dari-beone-tech-superapp-berbasis-teknologi-blockchain-asli-indonesia" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="card-title">“CitiQuest”, SuperApp Berbasis...</h1>
+                <p class="card-text">Jelajahi "CitiQuest", SuperApp revolusioner dari BeOne Tech...</p>
+                <a href="https://www.baseh.id/citiquest-superapp-berbasis-blockchain-dari-beone-tech" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="page" id="news">
+    <div class="d-flex justify-content-center mb-3">
+      <h1>News</h1>
+    </div>
+    <div class="d-flex justify-content-center mb-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="card-title">Inovasi Baru BeOne Tech...</h1>
+                <p class="card-text">BeOne Tech, sebuah perusahaan pionir berbasis Teknologi Blockchain yang diprakarsai pakar Indonesia Meidy Salmon...</p>
+                <a href="https://katakutip.com/terobosan-baru-beone-tech-pengembang-blockhain-asli-indonesia" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="card-title">Terobosan Baru BeOne Tech...</h1>
+                <p class="card-text">BeOne Tech, sebuah perusahaan pionir berbasis Teknologi Blockchain yang diprakarsai pakar Blockchain Indonesia Meidy Salmon...</p>
+                <a href="https://purwokerto.inews.id/read/401084/citiquest-dari-beone-tech-superapp-berbasis-teknologi-blockchain-asli-indonesia" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="card-title">CitiQuest dari BeOne Tech, SuperApp...</h1>
+                <p class="card-text">Sebuah SuperApp andal bernama "CitiQuest" dikembangkannya oleh BeOne Tech...</p>
+                <a href="https://www.baseh.id/citiquest-superapp-berbasis-blockchain-dari-beone-tech" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="page" id="news">
+    <div class="d-flex justify-content-center mb-3">
+      <h1>News</h1>
+    </div>
+    <div class="d-flex justify-content-center mb-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="card-title">Untuk Bisnis hingga Perjodohan...</h1>
+                <p class="card-text">Sebuah perusahaan pionir berbasis Teknologi Blockchain, BeOne Tech yang dimotori pakar Blockchain Indonesia Meidy Salmon...</p>
+                <a href="https://www.seputarmuria.com/untuk-bisnis-hingga-perjodohan-beone-tech-lahirkan-terobosan-baru-blockhain-asli-indonesia-yang-menyuguhkan-superapp-citiquest/" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="card-title">Terobosan Teranyar dari BeOne Tech...</h1>
+                <p class="card-text">BeOne Tech, sebuah perusahaan pionir berbasis Teknologi Blockchain yang diprakarsai pakar Blockchain Indonesia Meidy Salmon...</p>
+                <a href="https://muria.suaramerdeka.com/gaya-hidup/0711683419/terobosan-teranyar-dari-beone-tech-pengembang-blockhain-asli-indonesia#google_vignette" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="card-title">“CitiQuest”, SuperApp Berbasis Blockchain dari BeOne Tech</h1>
+                <p class="card-text">Jelajahi “CitiQuest”, SuperApp revolusioner dari BeOne Tech, yang dipimpin oleh Meidy Salmon...</p>
+                <a href="https://jatengtoday.com/beone-citiquest" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="page">
+    <footer id="footer">
+      <div>
+        <h1>Contact Us</h1>
+        <p>Email: info@example.com</p>
+        <p>Phone: 123-456-7890</p>
+        <button>Contact</button>
+      </div>
+    </footer>  
+  </section>
+  
+  <div id="pagination" class="pagination-vertical"></div>
+  <!-- Include Firebase SDK (version 8) -->
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+  <script src="script.js"></script>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function loadSwiper1() {
+      var swiper1 = new Swiper(".swiper-container1", {
+        direction: "vertical", // Add this line to enable vertical swiping
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination1",
+          clickable: true,
+        },
+      });
+    }
+
+    // Function to load Swiper 2
+    function loadSwiper2() {
+      var swiper2 = new Swiper(".swiper-container2", {
+        direction: "vertical", // Add this line to enable vertical swiping
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination2",
+          clickable: true,
+        },
+      });
+    }
+
+    // Load Swiper 1 when page is loaded
+    loadSwiper1();
+
+    // Load Swiper 2 when page is loaded
+    loadSwiper2();
+
+    // Simulate loading delay
+    setTimeout(function () {
+      // Sembunyikan preloader
+      document.getElementById("preloader").style.opacity = 0;
+      document.getElementById("preloader").style.display = "none";
+      // Tampilkan konten utama
+      document.getElementById("main-content").classList.add("visible");
+      goToPage(0);
+    }, 1000); // Ubah 3000 menjadi durasi loading yang diinginkan (dalam milidetik)
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var navbarToggler = document.querySelector(".navbar-toggler");
+
+      navbarToggler.addEventListener("click", function () {
+        navbarToggler.classList.toggle("collapsed");
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var navbarToggler = document.querySelector(".navbar-toggler");
+
+      navbarToggler.addEventListener("click", function () {
+        navbarToggler.classList.toggle("collapsed");
+        var barsIcon = navbarToggler.querySelector(".fa-bars");
+        var timesIcon = navbarToggler.querySelector(".fa-times");
+        barsIcon.classList.toggle("d-none");
+        timesIcon.classList.toggle("d-none");
+      });
+    });
+
+    // Get references to the offcanvas and the hamburger icon button
+    const offcanvas = document.querySelector('.offcanvas');
+    const hamburgerIcon = document.querySelector('.nav-button');
+
+    // Add event listener to the offcanvas
+    offcanvas.addEventListener('show.bs.offcanvas', function () {
+      // When the offcanvas is shown, hide the hamburger icon
+      hamburgerIcon.classList.add('hidden');
+    });
+
+    offcanvas.addEventListener('hidden.bs.offcanvas', function () {
+      // When the offcanvas is hidden, show the hamburger icon
+      hamburgerIcon.classList.remove('hidden');
+    });
+
+  </script>
+</body>
+
+</html>

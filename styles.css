@@ -1,0 +1,1973 @@
+@font-face {
+  font-family: "Glitch"; /* Nama font */
+  src: url("glitch.ttf") format("truetype"); /* Lokasi dan format font */
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Glitch", sans-serif;
+}
+
+.card-section {
+  display: flex;
+  justify-content: center;
+
+  gap: 20px;
+}
+
+.card {
+  width: 300px;
+  height: 450px;
+  border: 2px solid #333;
+  border-radius: 10px;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+/* Tambahan untuk memastikan ukuran konten sesuai */
+.card h2,
+.card p {
+  margin: 0;
+}
+
+/* Styling for Popup Form */
+.popup-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999999;
+}
+
+.popup-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.popup-title {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+/* Preloader Styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff; /* Warna background putih */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1; /* Mulai dengan opacity 1 */
+  transition: opacity 0.5s ease; /* Animasi transisi opacity */
+
+  flex-direction: column;
+  gap: 2;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #000; /* Warna garis hitam untuk spinner */
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Konten Utama Styles */
+#main-content {
+  opacity: 0; /* Mulai dengan opacity 0 */
+  transition: opacity 0.5s ease; /* Animasi transisi opacity */
+}
+
+/* Tampilkan konten utama setelah preloader menghilang */
+#main-content.visible {
+  opacity: 1;
+}
+
+#main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  height: 100vh;
+  transition: transform 0.5s ease;
+}
+
+.pagination-vertical {
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination-item {
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+  transform: rotate(45deg);
+}
+
+.pagination-item.active {
+  background-color: blue;
+}
+
+/* -----------------------------------------   */
+/* Home-Page */
+
+#home-page {
+  background: url("bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+
+  box-shadow: inset 0 0 200px 100px rgba(0, 0, 0, 0.5); /* Shadow ke dalam */
+
+  font-size: 60pt;
+  font-weight: 900;
+  font-family: sans-serif;
+  color: white;
+  font-family: "Roboto", sans-serif; /* Font yang digunakan (ganti dengan font yang Anda inginkan) */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Efek shadow */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+#home-page h1 {
+  font-family: Glitch;
+  animation: glitch 3s infinite linear alternate-reverse;
+  margin: 20px;
+  font-size: 95pt;
+}
+
+@keyframes glitch {
+  0%,
+  100% {
+    text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue,
+      1px 1px 0 blue, 0 0 5px pink;
+    transform: translateX(0); /* Reset transformasi */
+  }
+  5% {
+    text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue,
+      1px 1px 0 blue, 0 0 5px pink;
+  }
+  10% {
+    text-shadow: none; /* Hilangkan text-shadow untuk efek glitch */
+    transform: translateX(-2px); /* Geser teks ke kiri */
+  }
+  15% {
+    text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue,
+      1px 1px 0 blue, 0 0 5px pink;
+  }
+  20% {
+    text-shadow: none; /* Hilangkan text-shadow untuk efek glitch */
+    transform: translateX(2px); /* Geser teks ke kanan */
+  }
+  30% {
+    text-shadow: none; /* Hilangkan text-shadow untuk efek glitch */
+    transform: translateX(0); /* Reset transformasi */
+  }
+  40% {
+    text-shadow: none; /* Hilangkan text-shadow untuk efek glitch */
+    transform: translateX(-1px); /* Geser teks ke kiri */
+  }
+  50% {
+    text-shadow: none; /* Hilangkan text-shadow untuk efek glitch */
+    transform: translateX(1px); /* Geser teks ke kanan */
+  }
+  60% {
+    text-shadow: none; /* Hilangkan text-shadow untuk efek glitch */
+    transform: translateX(0); /* Reset transformasi */
+  }
+  70% {
+    text-shadow: none; /* Hilangkan text-shadow untuk efek glitch */
+    transform: translateX(-2px); /* Geser teks ke kiri */
+  }
+  80% {
+    text-shadow: none; /* Hilangkan text-shadow untuk efek glitch */
+    transform: translateX(2px); /* Geser teks ke kanan */
+  }
+  90% {
+    text-shadow: none; /* Hilangkan text-shadow untuk efek glitch */
+    transform: translateX(0); /* Reset transformasi */
+  }
+}
+
+#explore {
+  position: absolute;
+  bottom: 20px;
+  height: 50px;
+  width: 80px;
+
+  margin-left: 10px;
+  animation: moveUpDown 2s infinite;
+  cursor: pointer;
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0); /* Tidak bergerak */
+  }
+  50% {
+    transform: translateY(-5px); /* Bergerak ke atas */
+  }
+  100% {
+    transform: translateY(0); /* Kembali ke posisi awal */
+  }
+}
+
+#home-page button {
+  padding: 20px 50px;
+  border: none;
+  background-color: #007bff; /* Warna latar belakang */
+  color: white; /* Warna teks */
+  cursor: pointer;
+  border-radius: 5px; /* Untuk sudut sudut tombol */
+  font-size: 16px; /* Ukuran teks */
+  transition: background-color 0.3s; /* Transisi warna latar belakang saat dihover */
+
+  font-weight: 900;
+  font-family: Glitch;
+
+  animation: moveUpDown 2s infinite;
+}
+
+#home-page button:hover {
+  background-color: #0056b3; /* Warna latar belakang saat dihover */
+}
+
+@media screen and (max-width: 640px) {
+  #home-page h1 {
+    font-size: 32pt;
+  }
+}
+
+/* ----------------------------------------- */
+
+/* About Us */
+
+#about-us {
+  font-family: "Glitch";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  box-sizing: border-box;
+  background-image: url("glitched-bg-50.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+#about-us h1 {
+  font-size: 36px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#about-us p {
+  font-size: 24px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#about-us img {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 425px) {
+  #about-us h1 {
+    font-size: 24px;
+  }
+
+  #about-us p {
+    font-size: 14px; 
+  }
+
+  #about-us img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  #about-us h1 {
+    font-size: 30px;
+  }
+
+  #about-us p {
+    font-size: 17px; 
+  }
+
+  #about-us img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #about-us h1 {
+    font-size: 32px;
+  }
+
+  #about-us p {
+    font-size: 20px;
+  }
+
+  #about-us img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  #about-us h1 {
+    font-size: 36px;
+  }
+
+  #about-us p {
+    font-size: 24px;
+  }
+
+  #about-us img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 2560px) {
+  #about-us h1 {
+    font-size: 48px;
+  }
+
+  #about-us p {
+    font-size: 28px;
+  }
+
+  #about-us img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* ----------------------------------------- */
+
+/* Features */
+
+#features {
+  font-family: "Glitch";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  box-sizing: border-box;
+  background-image: url("glitched-bg-50.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+}
+
+#features h1 {
+  font-size: 36px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#features p {
+  font-size: 24px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#features .article img {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 425px) {
+  #features h1 {
+    font-size: 24px;
+  }
+
+  #features p {
+    font-size: 14px; 
+  }
+
+  #features .article img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  #features h1 {
+    font-size: 30px;
+  }
+
+  #features p {
+    font-size: 17px; 
+  }
+
+  #features .article img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #features h1 {
+    font-size: 32px;
+  }
+
+  #features p {
+    font-size: 20px;
+  }
+
+  #features .article img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  #features h1 {
+    font-size: 36px;
+  }
+
+  #features p {
+    font-size: 24px;
+  }
+
+  #features .article img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 2560px) {
+  #features h1 {
+    font-size: 48px;
+  }
+
+  #features p {
+    font-size: 28px;
+  }
+
+  #features .article img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+#features .article {
+  width: 30%;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 70%;
+}
+
+.thumbnail-container {
+  position: relative;
+  opacity: 0.9;
+}
+
+.thumbnail {
+  width: 70%; /* Ukuran thumbnail 70% dari lebar layar */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+
+  border: 4px solid;
+  border-image: linear-gradient(to right, #ffd700, #ffaf00); /* Gradasi emas */
+  border-image-slice: 1;
+}
+
+#play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 9999;
+}
+
+#arrow1 {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  cursor: pointer;
+  transform: rotate(-45deg);
+}
+#arrow2 {
+  position: absolute;
+  top: 0;
+  right: 15%;
+  cursor: pointer;
+  transform: rotate(45deg);
+}
+#arrow3 {
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  cursor: pointer;
+  transform: rotate(-135deg);
+}
+#arrow4 {
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  cursor: pointer;
+  transform: rotate(135deg);
+}
+
+.modal {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  transform-origin: center;
+
+  display: none;
+}
+
+.modal-content {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  background-color: #fff;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #000;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 999;
+}
+
+#video-player {
+  width: 100%;
+  background-size: contain;
+}
+
+@media screen and (max-width: 640px) {
+  #features {
+    flex-direction: column;
+    justify-content: start;
+  }
+  #features .article {
+    width: 100%;
+  }
+  .video-container {
+    width: 100%;
+  }
+
+  #features h4 {
+    margin: 0;
+    font-size: 35pt;
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+
+    border: 4px solid;
+    border-image: linear-gradient(
+      to right,
+      #ffd700,
+      #ffaf00
+    ); /* Gradasi emas */
+    border-image-slice: 1;
+  }
+  #arrow1 {
+    left: 0;
+    transform: rotate(-45deg);
+    width: 30px;
+  }
+  #arrow2 {
+    right: 0;
+    transform: rotate(45deg);
+    width: 30px;
+  }
+  #arrow3 {
+    left: 0;
+    transform: rotate(-135deg);
+    width: 30px;
+  }
+  #arrow4 {
+    right: 0;
+    transform: rotate(135deg);
+    width: 30px;
+  }
+}
+
+h4 {
+  font-family: Glitch;
+  font-size: 40pt;
+}
+
+#marquee-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: auto;
+  height: 120px;
+
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5;
+  overflow-x: auto;
+  width: 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+#marquee-container div {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: auto;
+  height: 120px;
+
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5;
+  overflow-x: auto;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+#marquee-container p {
+  font-size: 12pt;
+}
+#marquee-container img {
+  height: 50px;
+  margin: 5px;
+  display: inline-block;
+}
+
+/* .sponsor {
+} */
+
+/* --------------------------------------- */
+
+/* Smart Contract */
+
+#smart-contract {
+  font-family: "Glitch";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-image: url("glitched-bg-50.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+}
+
+#smart-contract h1 {
+  font-size: 36px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#smart-contract p {
+  font-size: 24px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#smart-contract img {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 425px) {
+  #smart-contract h1 {
+    font-size: 24px;
+  }
+
+  #smart-contract p {
+    font-size: 14px; 
+  }
+
+  #smart-contract img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  #smart-contract h1 {
+    font-size: 30px;
+  }
+
+  #smart-contract p {
+    font-size: 17px; 
+  }
+
+  #smart-contract img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #smart-contract h1 {
+    font-size: 32px;
+  }
+
+  #smart-contract p {
+    font-size: 20px;
+  }
+
+  #smart-contract img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  #smart-contract h1 {
+    font-size: 36px;
+  }
+
+  #smart-contract p {
+    font-size: 24px;
+  }
+
+  #smart-contract img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 2560px) {
+  #smart-contract h1 {
+    font-size: 48px;
+  }
+
+  #smart-contract p {
+    font-size: 28px;
+  }
+
+  #smart-contract img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+#smart-contract button {
+  padding: 10px 40px;
+  border: none;
+  background-color: #007bff; /* Warna latar belakang */
+  color: white; /* Warna teks */
+  cursor: pointer;
+  border-radius: 5px; /* Untuk sudut sudut tombol */
+  font-size: 16px; /* Ukuran teks */
+  transition: background-color 0.3s; /* Transisi warna latar belakang saat dihover */
+}
+
+#smart-contract button:hover {
+  background-color: #0056b3; /* Warna latar belakang saat dihover */
+}
+
+/* --------------------------------------- */
+
+/* News */
+
+#news {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+
+  background: url("bgGlitch.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+}
+.swiper-container {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.news-card {
+  width: calc(100% / 3 - 20px);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+}
+
+.news-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.news-summary {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff5722;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+#x3 {
+  display: flex;
+}
+#x1 {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+  #x3 {
+    display: none;
+  }
+  #x1 {
+    display: flex;
+  }
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: space-between;
+}
+
+.news-card {
+  width: calc(100% / 3 - 20px);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+}
+
+.news-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.news-summary {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* --------------------------------------- */
+
+/* Partners and Supporters */
+
+#partners-and-supporters {
+  font-family: "Glitch";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-image: url("glitched-bg-50.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+}
+
+#partners-and-supporters h1 {
+  font-size: 36px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#partners-and-supporters p {
+  font-size: 24px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#partners-and-supporters img {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 425px) {
+  #partners-and-supporters h1 {
+    font-size: 24px;
+  }
+
+  #partners-and-supporters p {
+    font-size: 14px; 
+  }
+
+  #partners-and-supporters img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  #partners-and-supporters h1 {
+    font-size: 30px;
+  }
+
+  #partners-and-supporters p {
+    font-size: 17px; 
+  }
+
+  #partners-and-supporters img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #partners-and-supporters h1 {
+    font-size: 32px;
+  }
+
+  #partners-and-supporters p {
+    font-size: 20px;
+  }
+
+  #partners-and-supporters img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  #partners-and-supporters h1 {
+    font-size: 36px;
+  }
+
+  #partners-and-supporters p {
+    font-size: 24px;
+  }
+
+  #partners-and-supporters img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 2560px) {
+  #partners-and-supporters h1 {
+    font-size: 48px;
+  }
+
+  #partners-and-supporters p {
+    font-size: 28px;
+  }
+
+  #partners-and-supporters img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+#partners-and-supporters button {
+  padding: 10px 40px;
+  border: none;
+  background-color: #007bff; /* Warna latar belakang */
+  color: white; /* Warna teks */
+  cursor: pointer;
+  border-radius: 5px; /* Untuk sudut sudut tombol */
+  font-size: 16px; /* Ukuran teks */
+  transition: background-color 0.3s; /* Transisi warna latar belakang saat dihover */
+}
+
+#partners-and-supporters button:hover {
+  background-color: #0056b3; /* Warna latar belakang saat dihover */
+}
+
+.partners {
+  margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+/* --------------------------------------- */
+
+/* Partners and Supporters 2 */
+
+#partners-and-supporters-2 {
+  font-family: "Glitch";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-image: url("glitched-bg-50.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+}
+
+#partners-and-supporters-2 h1 {
+  font-size: 36px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#partners-and-supporters-2 p {
+  font-size: 24px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#partners-and-supporters-2 img {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 425px) {
+  #partners-and-supporters-2 h1 {
+    font-size: 24px;
+  }
+
+  #partners-and-supporters-2 p {
+    font-size: 14px; 
+  }
+
+  #partners-and-supporters-2 img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  #partners-and-supporters-2 h1 {
+    font-size: 30px;
+  }
+
+  #partners-and-supporters-2 p {
+    font-size: 17px; 
+  }
+
+  #partners-and-supporters-2 img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #partners-and-supporters-2 h1 {
+    font-size: 32px;
+  }
+
+  #partners-and-supporters-2 p {
+    font-size: 20px;
+  }
+
+  #partners-and-supporters-2 img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  #partners-and-supporters-2 h1 {
+    font-size: 36px;
+  }
+
+  #partners-and-supporters-2 p {
+    font-size: 24px;
+  }
+
+  #partners-and-supporters-2 img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 2560px) {
+  #partners-and-supporters-2 h1 {
+    font-size: 48px;
+  }
+
+  #partners-and-supporters-2 p {
+    font-size: 28px;
+  }
+
+  #partners-and-supporters-2 img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+#partners-and-supporters-2 button {
+  padding: 10px 40px;
+  border: none;
+  background-color: #007bff; /* Warna latar belakang */
+  color: white; /* Warna teks */
+  cursor: pointer;
+  border-radius: 5px; /* Untuk sudut sudut tombol */
+  font-size: 16px; /* Ukuran teks */
+  transition: background-color 0.3s; /* Transisi warna latar belakang saat dihover */
+}
+
+#partners-and-supporters-2 button:hover {
+  background-color: #0056b3; /* Warna latar belakang saat dihover */
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff5722;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+.transparent-bg-btn {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  border-color: transparent !important;
+  font-size: 30px !important;
+}
+
+.offcanvas-header {
+  color: white;
+  justify-content: flex-start;
+}
+
+.offcanvas-header .btn-close {
+  color: white !important;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.offcanvas-body {
+  color: white;
+}
+
+.offcanvas {
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.8),
+      rgba(255, 255, 255, 0));
+}
+
+.offcanvas-body {
+  background-color: transparent;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  fill: white;
+}
+
+.nav-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-button:focus {
+  outline: none;
+}
+
+/* .transparent-bg-btn { */
+/* } */
+
+.hidden {
+  display: none;
+}
+
+.page-image {
+  width: 250px;
+  height: 250px;
+}
+
+/* ROADMAP */
+
+#roadmap {
+  font-family: "Glitch";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-image: url("glitched-bg-50.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+}
+
+#roadmap h1 {
+  font-size: 36px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#roadmap p {
+  font-size: 24px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#roadmap img {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 425px) {
+  #roadmap h1 {
+    font-size: 24px;
+  }
+
+  #roadmap p {
+    font-size: 14px; 
+  }
+
+  #roadmap img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  #roadmap h1 {
+    font-size: 30px;
+  }
+
+  #roadmap p {
+    font-size: 17px; 
+  }
+
+  #roadmap img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #roadmap h1 {
+    font-size: 32px;
+  }
+
+  #roadmap p {
+    font-size: 20px;
+  }
+
+  #roadmap img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  #roadmap h1 {
+    font-size: 36px;
+  }
+
+  #roadmap p {
+    font-size: 24px;
+  }
+
+  #roadmap img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 2560px) {
+  #roadmap h1 {
+    font-size: 48px;
+  }
+
+  #roadmap p {
+    font-size: 28px;
+  }
+
+  #roadmap img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+#roadmap button {
+  padding: 10px 40px;
+  border: none;
+  background-color: #007bff; /* Warna latar belakang */
+  color: white; /* Warna teks */
+  cursor: pointer;
+  border-radius: 5px; /* Untuk sudut sudut tombol */
+  font-size: 16px; /* Ukuran teks */
+  transition: background-color 0.3s; /* Transisi warna latar belakang saat dihover */
+}
+
+#roadmap button:hover {
+  background-color: #0056b3; /* Warna latar belakang saat dihover */
+}
+
+/* ROADMAP 2 */
+
+#roadmap-2 {
+  font-family: "Glitch";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-image: url("glitched-bg-50.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+}
+
+#roadmap-2 h1 {
+  font-size: 36px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#roadmap-2 p {
+  font-size: 24px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#roadmap-2 img {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 425px) {
+  #roadmap-2 h1 {
+    font-size: 24px;
+  }
+
+  #roadmap-2 p {
+    font-size: 14px; 
+  }
+
+  #roadmap-2 img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  #roadmap-2 h1 {
+    font-size: 30px;
+  }
+
+  #roadmap-2 p {
+    font-size: 17px; 
+  }
+
+  #roadmap-2 img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #roadmap-2 h1 {
+    font-size: 32px;
+  }
+
+  #roadmap-2 p {
+    font-size: 20px;
+  }
+
+  #roadmap-2 img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  #roadmap-2 h1 {
+    font-size: 36px;
+  }
+
+  #roadmap-2 p {
+    font-size: 24px;
+  }
+
+  #roadmap-2 img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 2560px) {
+  #roadmap-2 h1 {
+    font-size: 48px;
+  }
+
+  #roadmap-2 p {
+    font-size: 28px;
+  }
+
+  #roadmap-2 img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+#roadmap-2 button {
+  padding: 10px 40px;
+  border: none;
+  background-color: #007bff; /* Warna latar belakang */
+  color: white; /* Warna teks */
+  cursor: pointer;
+  border-radius: 5px; /* Untuk sudut sudut tombol */
+  font-size: 16px; /* Ukuran teks */
+  transition: background-color 0.3s; /* Transisi warna latar belakang saat dihover */
+}
+
+#roadmap-2 button:hover {
+  background-color: #0056b3; /* Warna latar belakang saat dihover */
+}
+
+/* ROADMAP 3 */
+
+#roadmap-3 {
+  font-family: "Glitch";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-image: url("glitched-bg-50.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+}
+
+#roadmap-3 h1 {
+  font-size: 36px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#roadmap-3 p {
+  font-size: 24px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#roadmap-3 img {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 425px) {
+  #roadmap-3 h1 {
+    font-size: 24px;
+  }
+
+  #roadmap-3 p {
+    font-size: 14px; 
+  }
+
+  #roadmap-3 img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  #roadmap-3 h1 {
+    font-size: 30px;
+  }
+
+  #roadmap-3 p {
+    font-size: 17px; 
+  }
+
+  #roadmap-3 img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #roadmap-3 h1 {
+    font-size: 32px;
+  }
+
+  #roadmap-3 p {
+    font-size: 20px;
+  }
+
+  #roadmap-3 img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  #roadmap-3 h1 {
+    font-size: 36px;
+  }
+
+  #roadmap-3 p {
+    font-size: 24px;
+  }
+
+  #roadmap-3 img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 2560px) {
+  #roadmap-3 h1 {
+    font-size: 48px;
+  }
+
+  #roadmap-3 p {
+    font-size: 28px;
+  }
+
+  #roadmap-3 img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+#roadmap-3 button {
+  padding: 10px 40px;
+  border: none;
+  background-color: #007bff; /* Warna latar belakang */
+  color: white; /* Warna teks */
+  cursor: pointer;
+  border-radius: 5px; /* Untuk sudut sudut tombol */
+  font-size: 16px; /* Ukuran teks */
+  transition: background-color 0.3s; /* Transisi warna latar belakang saat dihover */
+}
+
+#roadmap-3 button:hover {
+  background-color: #0056b3; /* Warna latar belakang saat dihover */
+}
+
+/* News */
+
+#news {
+  font-family: "Glitch";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-image: url("glitched-bg-50.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+}
+
+#news h1 {
+  font-size: 36px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#news p {
+  font-size: 24px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#news img {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 425px) {
+  #news h1 {
+    font-size: 24px;
+  }
+
+  #news p {
+    font-size: 14px; 
+  }
+
+  #news img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  #rnews h1 {
+    font-size: 30px;
+  }
+
+  #news p {
+    font-size: 17px; 
+  }
+
+  #news img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #news h1 {
+    font-size: 32px;
+  }
+
+  #news p {
+    font-size: 20px;
+  }
+
+  #news img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  #news h1 {
+    font-size: 36px;
+  }
+
+  #news p {
+    font-size: 24px;
+  }
+
+  #news img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 2560px) {
+  #news h1 {
+    font-size: 48px;
+  }
+
+  #news p {
+    font-size: 28px;
+  }
+
+  #news img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+#news button {
+  padding: 10px 40px;
+  border: none;
+  background-color: #007bff; /* Warna latar belakang */
+  color: white; /* Warna teks */
+  cursor: pointer;
+  border-radius: 5px; /* Untuk sudut sudut tombol */
+  font-size: 16px; /* Ukuran teks */
+  transition: background-color 0.3s; /* Transisi warna latar belakang saat dihover */
+}
+
+#news button:hover {
+  background-color: #0056b3; /* Warna latar belakang saat dihover */
+}
+
+/* Footer */
+
+#footer {
+  font-family: "Glitch";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-image: url("glitched-bg-50.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+}
+
+#footer h1 {
+  font-size: 36px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#footer p {
+  font-size: 24px;
+  text-shadow: 
+  -1px -1px 0 #00f7ff,  
+   1px -1px 0 #ff9100,
+  -1px  1px 0 #7300ff,
+   1px  1px 0 #40ff00;
+}
+
+#footer img {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 425px) {
+  #footer h1 {
+    font-size: 24px;
+  }
+
+  #footer p {
+    font-size: 14px; 
+  }
+
+  #footer img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  #footer h1 {
+    font-size: 30px;
+  }
+
+  #footer p {
+    font-size: 17px; 
+  }
+
+  #footer img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #footer h1 {
+    font-size: 32px;
+  }
+
+  #footer p {
+    font-size: 20px;
+  }
+
+  #footer img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  #footer h1 {
+    font-size: 36px;
+  }
+
+  #footer p {
+    font-size: 24px;
+  }
+
+  #footer img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 2560px) {
+  #footer h1 {
+    font-size: 48px;
+  }
+
+  #footer p {
+    font-size: 28px;
+  }
+
+  #footer img {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+#footer button {
+  padding: 10px 40px;
+  border: none;
+  background-color: #007bff; /* Warna latar belakang */
+  color: white; /* Warna teks */
+  cursor: pointer;
+  border-radius: 5px; /* Untuk sudut sudut tombol */
+  font-size: 16px; /* Ukuran teks */
+  transition: background-color 0.3s; /* Transisi warna latar belakang saat dihover */
+}
+
+#footer button:hover {
+  background-color: #0056b3; /* Warna latar belakang saat dihover */
+}
