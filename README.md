@@ -1,2 +1,0 @@
-# citiquest-web
-web-landingpage
